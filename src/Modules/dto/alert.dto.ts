@@ -34,16 +34,12 @@ export class AlertDto {
     @IsOptional()
     notified?: string;
 
+    @ApiProperty({
+        example: 'ETH',
+        description: 'The blockchain network (e.g., ETH, MATIC)',
+    })
+    @IsString()
     @IsOptional()
     tokenSymbol?: string | null;
 }
 
-// export class AlertDto {
-//     id?: number
-//     chain: string;
-//     dollar: number;
-//     email?: string;
-//     createdAt?: Date;
-//     notified?: string;
-//     tokenSymbol?: string;
-// }

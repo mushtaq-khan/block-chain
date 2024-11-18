@@ -24,14 +24,20 @@ export class AlertService {
         try {
             const alerts = await this.alertRepository.findAlerts({ where: { notified: false } });
 
+            if(!alerts || alerts.length === 0){
+                return {
+                    status: 1,
+                    message: 'No alerts to check',
+                    data: alerts
+                }
+            }
+
             const chains = alerts.map(alert => alert.chain);
 
             const prices = await this.moralisApiService.getPrices(chains);
             for (const alert of alerts) {
-                console.log(alert, 'alert');
-                
 
-                const price = prices.find(p => p.tokenSymbol === alert.tokenSymbol || p.symbol === alert.tokenSymbol);
+                const price = prices.find(p => p?.tokenSymbol === alert?.tokenSymbol || p?.symbol === alert.tokenSymbol);
 
                 if (price) {
                     const dollar = price?.usdPrice || price?.usd_price

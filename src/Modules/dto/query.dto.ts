@@ -1,7 +1,3 @@
-// export class PriceQueryDto {
-//     type: string;
-//   }
-
 import { ApiProperty } from '@nestjs/swagger';
 
 export class PriceQueryDto {
@@ -12,5 +8,13 @@ export class PriceQueryDto {
     default: 'EVERY_5_MIN',
   })
   type?: string;
+}
+
+export class SwapRateDto {
+  @ApiProperty({
+    description: 'The amount of ETH to calculate the swap rate',
+    example: 1.5,
+  })
+  ethAmount: number;
 }
 
