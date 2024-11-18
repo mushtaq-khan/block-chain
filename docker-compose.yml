@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nestjs-app
+    ports:
+      - '3000:3000'
+    environment:
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+      POLY_ADDRESS: 0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0
+      ETH_ADDRESS: 0xcB1C1FdE09f811B294172696404e88E658659905
+      BTC_ADDRESS: 0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+      MORALIS_API_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjExMzNjMjQ5LTBhNGUtNDE5Ni1iZDFmLWJlNDk2ZTYyOTkxNiIsIm9yZ0lkIjoiNDE2MTgyIiwidXNlcklkIjoiNDI3NzYxIiwidHlwZUlkIjoiYjA4ODcxNDgtYzcwYy00ZjRkLTllOTQtNTVkOWIxYTgwZTk5IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MzE2MzQzMzksImV4cCI6NDg4NzM5NDMzOX0.pwylS_mHCMpm0ATjUpJk0dSovOH82z2AGbKHZURV1Ao
+      EMAIL_PASS: xqow yson ayqx olga
+      EMAIL_USER: mushtaqkhan8488@gmail.com
+      DEFAULT_EMAIL: hyperhire_assignment@hyperhire.in
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
