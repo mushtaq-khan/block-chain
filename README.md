@@ -12,11 +12,6 @@ A short description of what the project does and its purpose.
 
 To install the dependencies for this project, follow these steps:
 
-1. Clone the repository:
-    ```bash
-    git clone <https://github.com/mushtaq-khan/block-chain.git>
-    ```
-
 2. Install the required dependencies using npm:
     ```bash
     npm install
